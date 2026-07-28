@@ -1,25 +1,16 @@
 using UnityEngine;
 
-public class Cloud : MonoBehaviour {
-    
-
-    public float move_speed = 2f;
-    public float size = 5f;
+public class Cloud : MonoBehaviour {    
+    float move_speed;
+    int size;
 
     void Start() {
-
-        size = Random.Range(5f, 10f);
-
+        move_speed = Random.Range(0.5f, 2f);
+        size = Random.Range(5, 20);
         transform.localScale = new Vector2(size, size);
-
     }
 
-
-    void Update() {
-
-        transform.position = new Vector2(transform.position.x + move_speed, transform.position.y);
-
+    void LateUpdate() {
+        transform.position += Vector3.right * move_speed * Time.deltaTime;
     }
-
-
 }
