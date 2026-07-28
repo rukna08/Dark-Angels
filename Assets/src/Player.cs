@@ -34,8 +34,10 @@ public class Player : MonoBehaviour {
     void handle_input() {
 
         // left and right
-        rb.linearVelocity = new Vector2(Input.GetAxisRaw("Horizontal") * move_speed, rb.linearVelocity.y);
-
+        if (is_grounded) {
+            rb.linearVelocity = new Vector2(Input.GetAxisRaw("Horizontal") * move_speed, rb.linearVelocity.y);    
+        }
+        
         // jump
         if (Input.GetButtonDown("Jump") && is_grounded) {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jump_speed);
